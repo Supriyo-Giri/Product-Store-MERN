@@ -16,7 +16,7 @@ const HomePage = () => {
         // console.log(res.data);
       } catch (error) {
         console.log(`Error fetching data: ${error}`);
-        toast.error("Something went wrong!");
+        toast.error("Something went wrong!",error);
       } finally {
         setLoading(false);
     }
