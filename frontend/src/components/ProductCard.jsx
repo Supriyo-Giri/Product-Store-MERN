@@ -6,8 +6,13 @@ const ProductCard = (props) => {
   const deleteProduct = async () => {
     const productId = props.pid;
     try {
-      await axios.delete(`http://localhost:5000/api/products/${productId}`);
-      console.log(`product with id: ${productId} is deleted from the database!`);
+      await axios.delete(
+        `https://product-store-7b65.onrender.com/api/products/${productId}`
+      );
+
+      console.log(
+        `product with id: ${productId} is deleted from the database!`
+      );
       props.fetchData();
       toast.success(`Successfully deleted product, Reload!`);
     } catch (error) {

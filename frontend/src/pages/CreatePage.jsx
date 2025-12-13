@@ -1,39 +1,42 @@
-import { useState } from 'react'
-import './pages.css'
-import axios from 'axios';
-import { toast } from 'react-toastify';
-
+import { useState } from "react";
+import "./pages.css";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const CreatePage = () => {
-
   const [newProduct, setNewProduct] = useState({
-    name:"",
-    price:"",
-    image:"",
+    name: "",
+    price: "",
+    image: "",
   });
 
-  const handleAddProduct = async() => {
+  const handleAddProduct = async () => {
     try {
-      await axios.post("http://localhost:5000/api/products",newProduct)
-      console.log(`Product created successfully!`);
-      toast.success('Product created successfully!')
+      await axios.post(
+        "https://product-store-7b65.onrender.com/api/products",
+        newProduct
+      );
 
+      console.log(`Product created successfully!`);
+      toast.success("Product created successfully!");
     } catch (error) {
       console.log(error);
-      toast.error('Something went wrong!');
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   return (
-    <div className='main-create-window'>
-      <h2 className='new-heading'>Create new Product</h2>
+    <div className="main-create-window">
+      <h2 className="new-heading">Create new Product</h2>
       <div className="dark-form my-container">
-      
         <div className="input-group input-group-lg mb-3">
           <input
             type="text"
             className="form-control dark-input my-input"
-            placeholder="Product name" onChange={(e)=> setNewProduct({ ...newProduct, name: e.target.value})}
+            placeholder="Product name"
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, name: e.target.value })
+            }
           />
         </div>
 
@@ -41,7 +44,10 @@ const CreatePage = () => {
           <input
             type="text"
             className="form-control dark-input my-input"
-            placeholder="Product Price" onChange={(e)=> setNewProduct({ ...newProduct, price: e.target.value})}
+            placeholder="Product Price"
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, price: e.target.value })
+            }
           />
         </div>
 
@@ -49,14 +55,22 @@ const CreatePage = () => {
           <input
             type="text"
             className="form-control dark-input my-input"
-            placeholder="Product image url" onChange={(e)=> setNewProduct({ ...newProduct, image: e.target.value})}
+            placeholder="Product image url"
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, image: e.target.value })
+            }
           />
+        </div>
+        <button
+          type="button"
+          className="btn btn-primary my-btn"
+          onClick={handleAddProduct}
+        >
+          Add Product
+        </button>
       </div>
-      <button type="button" className="btn btn-primary my-btn" onClick={handleAddProduct}>Add Product</button>
     </div>
-  </div>
+  );
+};
 
-  )
-}
-
-export default CreatePage
+export default CreatePage;

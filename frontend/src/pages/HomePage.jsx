@@ -11,7 +11,7 @@ const HomePage = () => {
 
   const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/products/all");
+        const res = await axios.get("https://product-store-7b65.onrender.com/api/products/all");
         setProducts(res.data);
         // console.log(res.data);
       } catch (error) {
@@ -25,7 +25,8 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/products/all");
+        const res = await axios.get("https://product-store-7b65.onrender.com/api/products/all");
+
         setProducts(res.data);
         // console.log(res.data);
       } catch (error) {
